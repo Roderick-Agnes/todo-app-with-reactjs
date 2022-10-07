@@ -4,6 +4,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import productApi from "./api/productApi";
 import "./App.css";
 import NotFound from "./components/NotFound";
+import CounterFeature from "./features/Counter";
 import HomeDetail from "./features/Home";
 import Todo from "./features/Todo";
 import logo from "./logo.svg";
@@ -42,7 +43,8 @@ function App() {
         <Switch>
           <Redirect from="/home" to="/" exact />
 
-          <Route path="/" component={HomeDetail} exact />
+          {/* <Route path="/" component={HomeDetail} exact /> */}
+          <Route path="/" component={CounterFeature} exact />
           <Route path="/todo" component={Todo} exact />
           <Route component={NotFound} />
         </Switch>
