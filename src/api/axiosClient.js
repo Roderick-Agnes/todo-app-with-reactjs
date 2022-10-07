@@ -30,6 +30,15 @@ axiosClient.interceptors.response.use(
   function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
+    const { config, status, data } = error.response;
+    const URLS = ["/auth/local/register", "/auth/local"];
+    if (URLS.includes(config.url) && status === 400) {
+      const errors = data.data || [];
+      const fisrtError = errors.length > 0 ? errors[0] : {};
+      const messages = fisrtError.messages || [];
+      const firstMessage = messages.length > 0 ? messages[0] : {};
+      throw new Error(firstMessage.message);
+    }
     return Promise.reject(error);
   }
 );

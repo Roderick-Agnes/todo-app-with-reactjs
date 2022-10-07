@@ -1,13 +1,11 @@
-import { randomColor } from "randomcolor";
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import productApi from "./api/productApi";
 import "./App.css";
+import Header from "./components/Header";
 import NotFound from "./components/NotFound";
 import CounterFeature from "./features/Counter";
-import HomeDetail from "./features/Home";
 import Todo from "./features/Todo";
-import logo from "./logo.svg";
 
 function App() {
   useEffect(() => {
@@ -22,33 +20,32 @@ function App() {
     fetchProducts();
   }, []);
 
-  const [color, setColor] = useState("green");
-  useEffect(() => {
-    const intervalRef = setInterval(() => {
-      const newColor = randomColor();
-      setColor(newColor);
-    }, 2000);
+  // const [color, setColor] = useState("green");
+  // useEffect(() => {
+  //   const intervalRef = setInterval(() => {
+  //     const newColor = randomColor();
+  //     setColor(newColor);
+  //   }, 2000);
 
-    return () => {
-      clearInterval(intervalRef);
-    };
-  }, []);
+  //   return () => {
+  //     clearInterval(intervalRef);
+  //   };
+  // }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" />
+      <Header />
+      {/* <img src={logo} className="App-logo" alt="logo" />
         <p style={{ color: color }}>
           Edit <code>src/App.js</code> and save to reload.
         </p> */}
-        <Switch>
-          <Redirect from="/home" to="/" exact />
+      <Switch>
+        <Redirect from="/home" to="/" exact />
 
-          {/* <Route path="/" component={HomeDetail} exact /> */}
-          <Route path="/" component={CounterFeature} exact />
-          <Route path="/todo" component={Todo} exact />
-          <Route component={NotFound} />
-        </Switch>
-      </header>
+        {/* <Route path="/" component={HomeDetail} exact /> */}
+        <Route path="/" component={CounterFeature} exact />
+        <Route path="/todos" component={Todo} exact />
+        <Route component={NotFound} />
+      </Switch>
     </div>
   );
 }

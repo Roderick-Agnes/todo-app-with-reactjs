@@ -1,16 +1,9 @@
 {
-    "compilerOptions": {
-      "module": "commonjs",
-      "target": "es6",
-      "baseUrl": "src",
-    },
-    "include": ["src/**/*"]
-  }
-// {
-//   "compilerOptions": {
-//     "baseUrl": ".",
-//     "paths": {
-//       "@/*":["src/*"]
-//     }
-//   }
-// }
+  "compilerOptions": {
+    "module": "ES6",
+    "target": "ES6",
+    "baseUrl": "src",
+    "moduleResolution": "Node"
+  },
+  "include": ["src/**/*"]
+}
