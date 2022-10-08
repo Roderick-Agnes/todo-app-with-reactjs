@@ -1,4 +1,11 @@
-import { Box, Container, Grid, makeStyles, Paper } from "@material-ui/core";
+import {
+  Box,
+  Container,
+  Grid,
+  makeStyles,
+  Paper,
+  useMediaQuery,
+} from "@material-ui/core";
 import Pagination from "@material-ui/lab/Pagination";
 import productApi from "api/productApi";
 import { useEffect, useState } from "react";
@@ -9,26 +16,29 @@ import ProductSort from "../components/ProductSort";
 
 ListPage.propTypes = {};
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: "10px 0",
-  },
-  left: {
-    maxWidth: "250px",
-    width: "250px",
-    position: "sticky",
-  },
-  right: {
-    flex: "1 1 0",
-  },
-  pagination: {
-    marginTop: "20px",
-    paddingBottom: "20px",
-    display: "flex",
-    justifyContent: "center",
-  },
-}));
 function ListPage(props) {
+  const matches = useMediaQuery("(min-width:480px)");
+
+  console.log(`(min-width:600px) matches: ${matches}`);
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      padding: "10px 0",
+    },
+    left: {
+      flex: "0 1",
+      minWidth: `${!matches ? "100%" : "250px"}`,
+      width: "240px",
+    },
+    right: {
+      flex: "1 1 0",
+    },
+    pagination: {
+      marginTop: "20px",
+      paddingBottom: "20px",
+      display: "flex",
+      justifyContent: "center",
+    },
+  }));
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
   const [productList, setProductList] = useState([]);

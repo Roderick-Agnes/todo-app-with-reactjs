@@ -9,7 +9,8 @@ ProductSort.propTypes = {
 const useStyles = makeStyles((theme) => ({
   root: {},
   headerShort: {
-    margin: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
   },
 }));
 function ProductSort(props) {
