@@ -25,9 +25,8 @@ function ListPage(props) {
       padding: "10px 0",
     },
     left: {
-      flex: "0 1",
       minWidth: `${!matches ? "100%" : "250px"}`,
-      width: "240px",
+      width: "250px",
     },
     right: {
       flex: "1 1 0",
