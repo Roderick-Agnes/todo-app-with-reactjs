@@ -1,3 +1,4 @@
+import ProductFeature from "features/Product";
 import { useEffect } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import productApi from "./api/productApi";
@@ -42,8 +43,10 @@ function App() {
         <Redirect from="/home" to="/" exact />
 
         {/* <Route path="/" component={HomeDetail} exact /> */}
-        <Route path="/" component={CounterFeature} exact />
-        <Route path="/todos" component={Todo} exact />
+        {/* <Route path="/" component={CounterFeature} exact /> */}
+        <Route path="/" component={ProductFeature} exact />
+        <Route path="/products" component={ProductFeature} />
+        <Route path="/todos" component={Todo} />
         <Route component={NotFound} />
       </Switch>
     </div>
